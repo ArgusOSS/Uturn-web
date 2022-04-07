@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <nb-card>
+                <nb-card-header>
+                    <div class="row">
+                        <h4>{{ IP }}</h4>
+                    </div>
+
+                    <div class="row">
+                        <h6><sub>{{ OS }}</sub></h6>
+                    </div>
+                </nb-card-header>
+
+                <nb-card-body>
+                    <form #serverForm="ngForm" class="form form-horizontal">
+                        <div class="form-group">
+                            <label class="col-form-label"><b>Uturn server URL:</b></label>
+                            <input class="form-control" fullWidth [(ngModel)]="ServerForm.url" min="3" name="url" nbInput pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" required status="info" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label"><b>Token:</b></label>
+                            <input class="form-control" fullWidth [(ngModel)]="ServerForm.token" minlength="15" name="token" nbInput required status="info" type="text">
+                        </div>
+                        <div class="form-group">
+                            <button style="float:right;" [disabled]="serverForm.invalid" nbButton status="danger">INSERT</button>
+                            <!--- (click)="addServer(ServerForm.url, ServerForm.token)"-->
+                        </div>
+                    </form>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col">
+            <nb-card class="overflowit">
+                <nb-card-header><h4>Projects:</h4></nb-card-header>
+                <nb-card-body>
+                    <nb-list>
+                        <nb-list-item *ngFor="let project of projects">
+                            <div class="container">
+                                <div class="row">
+                                    <nb-user
+                                        name={{project.name}}
+                                        title={{project.branch}}
+                                        size="giant"
+                                    ></nb-user>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button nbButton status="success" (click)="getCommits(project.id)">Commits</button>
+                                    </div>
+                                    <div class="col">
+                                        <button style="float:right;" nbButton status="primary" (click)="refreshProjectCommits(project.id)">Refresh</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card-body>
+                <nb-card-footer>
+                    <div class="row">
+                        <div class="col">
+                            <button nbButton status="info" (click)="refreshProjects()">Refresh Projects</button>
+                        </div>
+                    </div>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+    </div>
+    <div class="row">
+        <nb-card class="commits" status="success">
+            <nb-card-header><h4>Commits:</h4></nb-card-header>
+            <nb-card-body>
+                <input nbInput #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+                <ng2-smart-table 
+                [settings]="settings" 
+                [source]="source"
+                (custom)="rollback($event)"
+                ></ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

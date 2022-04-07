@@ -1,0 +1,47 @@
+version: '3.1'
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    networks:
+      - live
+  
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    links:
+      - redis
+    depends_on:
+      - redis
+    volumes:
+      - "./backend/:/opt/uturn/backend"
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=Uturn.settings
+    networks:
+      - live
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+
+  celery:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    container_name: celery_server
+    command: celery -A Uturn worker --loglevel=info --without-gossip --without-mingle --without-heartbeat -Ofair --pool=solo
+    links:
+      - redis
+    volumes:
+      - "./backend:/opt/uturn/backend"
+    networks:
+      - live
+
+networks:
+  live:

@@ -1,0 +1,29 @@
+button {
+    margin-top: 15px;
+}
+
+.overflowit {
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+.commits {
+    max-height: 500;
+    overflow-y: scroll;
+}
+
+::ng-deep {
+    ng2-st-tbody-edit-delete {
+      display: none;
+      height: 0 !important;
+    }
+  
+    ng2-st-tbody-custom {
+      display: flex;
+      text-align: center;
+      border: none;
+      background-color: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }

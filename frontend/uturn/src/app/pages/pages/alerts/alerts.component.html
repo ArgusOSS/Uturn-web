@@ -1,0 +1,36 @@
+<div class="container">
+    <ng-container>
+            <nb-card status="danger">
+                <nb-card-header>Alerts</nb-card-header>
+            </nb-card>
+            <nb-list>
+                <nb-list-item *ngFor="let alert of alerts">
+                    <nb-reveal-card>
+                        <nb-card-front>
+                          <nb-card>
+                            <nb-card-header>
+                                <div *ngIf="alert.task_id">
+                                    {{ alert.task_id }} : {{ alert.type }}
+                                </div>
+                            </nb-card-header>
+                            <nb-card-body>
+                                {{ alert.exec }}
+                            </nb-card-body>
+                          </nb-card>
+                        </nb-card-front>
+                        <nb-card-back>
+                          <nb-card>
+                            <nb-card-header>
+                                Details
+                            </nb-card-header>
+                              
+                            <nb-card-body class="overflowit">
+                                {{ alert.msg }}
+                            </nb-card-body>
+                          </nb-card>
+                        </nb-card-back>
+                      </nb-reveal-card>
+                </nb-list-item>
+            </nb-list>
+    </ng-container>
+</div>

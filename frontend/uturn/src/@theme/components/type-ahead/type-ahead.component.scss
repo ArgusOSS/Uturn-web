@@ -1,0 +1,11 @@
+:host {
+  .dropdown-menu {
+    position: absolute !important;
+  }
+
+  ::ng-deep .input-group-text {
+    background-color: inherit !important;
+    border: inherit !important;
+  }
+
+}
