@@ -26,3 +26,8 @@ docker exec -it utu2rn_backend python3 manage.py createsuperuser
 ```
 
 Use this user when you are trying to login. You would require to setup [Uturn CLI](https://github.com/UturnOSS/Uturn-CLI) on your infrastructure to start adding servers to continue smoothly.
+
+
+### How do I contrbute?
+
+Accordingly request to be assigned one of the issues from the issues tab which you think you can fullfil. Don't be afraid of asking questions. The rule is effort for effort here :D
