@@ -18,14 +18,14 @@ Uturn Web is the part which is supposed to be deployed at a server separate from
 
 ### Getting started
 
-<code>
-  sudo docker-compose up
-</code>
+```
+sudo docker-compose up -d
+```
 
 Now, to create a user do the following:
 
-<code>
-  docker exec -it uturn_backend python3 manage.py createsuperuser
-</code>
+```
+docker exec -it uturn_backend python3 manage.py createsuperuser
+```
 
 Use this user when you are trying to login. You would require to setup [Uturn CLI](https://github.com/UturnOSS/Uturn-CLI) on your infrastructure to start adding servers to continue smoothly.
