@@ -22,7 +22,7 @@ sudo docker-compose up -d
 Now, to create a user do the following:
 
 ```
-docker exec -it utu2rn_backend python3 manage.py createsuperuser
+docker exec -it uturn_backend python3 manage.py createsuperuser
 ```
 
 Use this user when you are trying to login. You would require to setup [Uturn CLI](https://github.com/UturnOSS/Uturn-CLI) on your infrastructure to start adding servers to continue smoothly.
