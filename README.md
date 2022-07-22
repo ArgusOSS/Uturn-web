@@ -9,7 +9,7 @@
 
 
 # Uturn
-**Uturn** is a web framework to rollback and auto deploy services in one click.
+**Uturn** is a web framework to rollback and auto deploy services in one click. We plan to try to be an SRE toolkit for organisations who can't afford one.
 
 ### Context
 Uturn Web is the part which is supposed to be deployed at a server separate from your active exposed infrastructure. It is supposed to be an internal tool to help manage servers better.
